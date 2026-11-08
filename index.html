@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#182c26">
+  <title>Little Haven — Yard Days</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="game-shell" aria-label="Little Haven yard game">
+    <canvas id="world" aria-label="First person view of your yard"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">✿</div><div><span class="eyebrow">A LITTLE PLACE TO GROW</span><h1>Little Haven</h1></div></div>
+      <div class="day-pill"><span class="sun-icon">☀</span><span id="day-label">Day 1</span><i></i><span id="time-label">8:15 AM</span></div>
+      <div class="wallet"><span class="coin-icon">✦</span><span id="coins">0</span><span class="wallet-label">petals</span><button id="menu-button" class="icon-button" aria-label="Open garden journal">☰</button></div>
+    </header>
+    <section class="quest-card panel">
+      <div class="quest-heading"><span class="quest-flower">✿</span><div><span class="eyebrow">TODAY'S LITTLE PLAN</span><h2>Make room for bloom</h2></div></div>
+      <p>Clear the bits and bobs from your garden.</p>
+      <div class="progress-row"><div class="progress-track"><div id="progress-fill"></div></div><b id="progress-count">0 / 0</b></div>
+      <div class="reward-line"><span>✦</span> A tidy yard is its own reward <span class="reward-amount">+25</span></div>
+    </section>
+    <div class="location-tag"><span class="location-dot"></span><span id="zone-label">THE BACK GARDEN</span><span class="location-divider">·</span><span id="weather-label">Soft morning light</span></div>
+    <div class="crosshair"><span></span><i></i></div>
+    <div id="target-card" class="target-card" aria-live="polite"><span class="target-icon">✦</span><div><b id="target-name">A little something</b><small id="target-hint">Press E or click to tidy</small></div><kbd>E</kbd></div>
+    <div id="toast" class="toast"></div>
+    <div class="bottom-left"><div class="tool-chip"><span class="tool-icon">⌁</span><div><small>IN YOUR HANDS</small><b id="tool-name">Garden basket</b></div><span class="tool-key">1</span></div><button id="shop-button" class="shop-button"><span>✿</span> Garden shop <kbd>T</kbd></button></div>
+    <div class="bottom-right"><div class="controls-hint"><span>W A S D</span> move <i>·</i> <span>mouse</span> look <i>·</i> <span>E</span> tidy</div><div class="comfort-note">Take your time. The garden isn't going anywhere.</div></div>
+    <div class="touch-controls" aria-hidden="true"><div class="dpad"><button data-move="forward">↑</button><div><button data-move="left">←</button><button data-move="back">↓</button><button data-move="right">→</button></div></div><button id="touch-interact" class="touch-interact">✿<small>TIDY</small></button></div>
+    <div id="modal-backdrop" class="modal-backdrop hidden">
+      <section id="modal" class="modal panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+        <div class="modal-kicker">✿ &nbsp; YOUR GARDEN JOURNAL</div><h2 id="modal-title">A little care goes a long way</h2><p id="modal-copy" class="modal-copy"></p><div id="modal-content"></div>
+      </section>
+    </div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
