@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101513" />
+  <title>Deepbound — A quiet mining game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Deepbound home">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 28 10v12L16 29 4 22V10z"/><path d="m16 3 5 10-5 16-5-16z"/><path d="m4 10 12 3 12-3M4 22l12-9 12 9"/></svg></span>
+        <span><b>DEEPBOUND</b><small>FIELD JOURNAL · 07</small></span>
+      </a>
+      <div class="top-status"><span class="status-dot"></span><span>THE LOWER WORKS</span><i></i><span id="shift-label">SHIFT 01</span></div>
+      <button class="icon-button" id="sound-button" aria-label="Toggle sound" title="Sound effects are off">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4zM15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/></svg>
+      </button>
+    </header>
+
+    <main>
+      <section class="intro-row">
+        <div><p class="eyebrow">A PATIENT MINER'S JOURNAL</p><h1>One swing at a time.</h1><p class="lede">Work the seam. Mend your tools. Go a little deeper.</p></div>
+        <div class="depth-stamp"><span>CURRENT DEPTH</span><strong><b id="depth-value">01</b><small>m</small></strong><div class="depth-track"><span id="depth-fill"></span></div><small id="depth-next">THE SHAFT GOES ON</small></div>
+      </section>
+
+      <section class="dashboard">
+        <div class="mine-column">
+          <div class="mine-card">
+            <div class="mine-card-head"><div><span class="eyebrow">ACTIVE SEAM</span><h2 id="region-name">Ember Hollow</h2></div><div class="weather"><span class="weather-icon">✳</span><span>WARM DRAFT<br><small>STABLE AIR</small></span></div></div>
+            <div class="mine-scene" id="mine-scene">
+              <div class="scene-stars"></div><div class="scene-beam"></div>
+              <div class="rock-shadow"></div>
+              <button class="ore-node" id="mine-button" aria-label="Strike the ore seam">
+                <svg class="ore-art" viewBox="0 0 280 250" role="img" aria-label="A glowing ore deposit">
+                  <defs><linearGradient id="stone" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#68776c"/><stop offset=".48" stop-color="#39483f"/><stop offset="1" stop-color="#202c28"/></linearGradient><linearGradient id="gem" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5d485"/><stop offset=".5" stop-color="#c27f44"/><stop offset="1" stop-color="#70432f"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                  <path class="rock-base" d="m44 183 15-68 39-41 47-18 59 16 34 44 14 67-35 33-63 13-65-5z" fill="url(#stone)" stroke="#819080" stroke-opacity=".36" stroke-width="2"/>
+                  <path d="m58 116 40-40 23 22-18 35-45 19zm96-54 50 14-13 39-37 14-23-33zm-65 86 31-20 27 21-12 42-46 6zm89 4 31-30 20 24-7 39-42 6z" fill="#27342f" opacity=".8"/>
+                  <path class="ore-glow" d="m129 94 18-21 12 17-11 20 17 20-20 30-22-20 9-22-15-9z" fill="url(#gem)" filter="url(#glow)"/>
+                  <path d="m147 73 12 17-11 20-8-16zm18 57-20 30 1-26 12-20z" fill="#ffe3a2" opacity=".8"/>
+                  <path d="m67 174 25 8 19 25m104-103 18 5m-129-43 19-17m74 136 25-7" fill="none" stroke="#adbb9e" stroke-opacity=".28" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <span class="strike-label">STRIKE</span>
+              </button>
+              <div class="scene-caption"><span class="depth-marker">⟡</span><span id="vein-caption">COPPER VEIN · COMMON</span><span class="scene-coords">12° N · 04° E</span></div>
+              <div class="hit-float" id="hit-float">+1</div>
+            </div>
+            <div class="vein-info">
+              <div class="vein-title"><div class="ore-swatch" id="ore-swatch"></div><div><b id="ore-name">Copper seam</b><small id="ore-detail">A forgiving first find.</small></div></div>
+              <div class="vein-health"><div class="health-label"><span>SEAM INTEGRITY</span><b><span id="hp-value">12</span> <small>/ <span id="hp-max">12</span></small></b></div><div class="health-track"><span id="hp-fill"></span></div><small class="health-hint" id="health-hint">Tap or click the seam to mine</small></div>
+            </div>
+          </div>
+          <div class="log-card"><div class="log-icon">✦</div><div><span class="eyebrow">FIELD NOTE</span><p id="field-note">Every seam gives way. The patient hand finds what the hurried one misses.</p></div><span class="log-date" id="log-date">DAY 01</span></div>
+        </div>
+
+        <aside class="right-column">
+          <section class="wallet-card">
+            <div class="section-heading"><div><span class="eyebrow">YOUR SATCHEL</span><h2>Supplies</h2></div><span class="bag-icon">⌑</span></div>
+            <div class="wallet-row"><span class="wallet-symbol coin">◉</span><div class="wallet-name"><b>Credits</b><small>Guild scrip</small></div><strong id="credits-value">0</strong></div>
+            <div class="wallet-row"><span class="wallet-symbol ore-icon">◆</span><div class="wallet-name"><b id="material-label">Copper</b><small>Raw ore</small></div><strong id="ore-value">0</strong></div>
+            <div class="wallet-footer"><span>Lifetime finds</span><b id="lifetime-value">0 ore</b></div>
+          </section>
+
+          <section class="workshop-card">
+            <div class="section-heading workshop-heading"><div><span class="eyebrow">THE WORKBENCH</span><h2>Make it count.</h2></div><span class="workbench-icon">⌁</span></div>
+            <p class="workshop-copy">Small improvements add up. Choose where your credits go.</p>
+            <div id="upgrade-list" class="upgrade-list"></div>
+          </section>
+          <div class="tip-card"><span>✧</span><p><b>DOWN THE SHAFT</b><br>New seams reveal themselves as you dig. Better tools make each swing go further.</p></div>
+        </aside>
+      </section>
+      <footer class="footer"><span>DEEPBOUND MINING CO. <b>·</b> EST. BELOW</span><button id="reset-button" class="reset-button">START A FRESH JOURNAL</button><span>A QUIET GAME FOR THE LONG HAUL</span></footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
